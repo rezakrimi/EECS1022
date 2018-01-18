@@ -17,6 +17,21 @@ public class Lab1Activity extends AppCompatActivity
         setContentView(R.layout.activity_lab1);
     }
 
+    private String getInterpretation(double BMI){
+        if(BMI < 18.5){
+            return "Underweight";
+        }
+        else if(BMI < 25.0){
+            return "Normal";
+        }
+        else if(BMI < 30.0){
+            return "Overweight";
+        }
+        else{
+            return "Obese";
+        }
+    }
+
     private void setContentsOfTextView(int id, String newContents){
         View view = findViewById(id);
         TextView textView = (TextView) view;
@@ -59,6 +74,8 @@ public class Lab1Activity extends AppCompatActivity
 
         Person temp = new Person(textName, weight, height);
         String contents = textName + " has BMI " + String.format("%.2f", temp.getBMI());
+        String interpretation = textName + " is " + getInterpretation(temp.getBMI());
+        setContentsOfTextView(R.id.labelInterpretatoin, interpretation);
         setContentsOfTextView(R.id.labelAnswer, contents);
     }
 }

@@ -114,4 +114,17 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/buttonCompute"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interpretatoin"
+        android:id="@+id/labelInterpretatoin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/labelAnswer"
+        android:layout_alignRight="@+id/labelAnswer"
+        android:layout_alignEnd="@+id/labelAnswer"
+        android:textAlignment="center"
+        />
+
 </RelativeLayout>
