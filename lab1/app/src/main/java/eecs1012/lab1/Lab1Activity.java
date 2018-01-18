@@ -58,7 +58,7 @@ public class Lab1Activity extends AppCompatActivity
         }
 
         Person temp = new Person(textName, weight, height);
-        String contents = textName + " has BMI " + temp.getBMI();
+        String contents = textName + " has BMI " + String.format("%.2f", temp.getBMI());
         setContentsOfTextView(R.id.labelAnswer, contents);
     }
 }
