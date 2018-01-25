@@ -15,6 +15,7 @@ public class Lab1Activity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab1);
+        setTitle("EECS1022 W18 Lab1: BMI Calculator");
     }
 
     private String getInterpretation(double BMI){
