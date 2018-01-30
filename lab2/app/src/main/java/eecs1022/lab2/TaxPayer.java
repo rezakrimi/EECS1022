@@ -9,7 +9,7 @@ public class TaxPayer {
     private double income;
     private String fs;
 
-    public TaxPayer(String name, int income, String fs) {
+    public TaxPayer(String name, double income, String fs) {
         this.name = name;
         this.income = income;
         this.fs = fs;
