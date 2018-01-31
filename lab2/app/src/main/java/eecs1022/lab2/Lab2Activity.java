@@ -64,42 +64,58 @@ public class Lab2Activity extends AppCompatActivity
         }
 
         String temp = "";
+        double finalTax = 0;
 
-        temp += "Calculation is based on teh scheme of " + taxPayer.getFs() + "Filing: \n";
+        temp += "Calculation is based on the scheme of " + taxPayer.getFs() + " Filing: \n";
+
+        boolean isFinished = false;
 
         if(income >= taxes[statusFinder][0]){
             double part1 = taxes[statusFinder][0] * 0.10;
-            temp += "Part I: $" + part1 + '\n';
+            temp += "Part I: $" + String.format("%.2f", part1) + '\n';
+            finalTax += part1;
         }
         else{
             double part1 = income * 0.10;
-            temp += "Part I: $" + part1 + '\n';
+            temp += "Part I: $" + String.format("%.2f", part1) + '\n';
+            isFinished = true;
+            finalTax += part1;
         }
         if(income >= taxes[statusFinder][1]){
             double part2 = (taxes[statusFinder][1] - taxes[statusFinder][0]) * 0.15;
-            temp += "Part II: $" + part2 + '\n';
+            temp += "Part II: $" + String.format("%.2f", part2) + '\n';
+            finalTax += part2;
         }
-        else {
+        else if (!isFinished){
             double part2 = (income - taxes[statusFinder][0]) * 0.15;
-            temp += "Part II: $" + part2 + '\n';
+            temp += "Part II: $" + String.format("%.2f", part2) + '\n';
+            isFinished = true;
+            finalTax += part2;
         }
         if(income >= taxes[statusFinder][2]){
             double part3 = (taxes[statusFinder][2] - taxes[statusFinder][1]) * 0.25;
-            temp += "Part III: $" + part3 + '\n';
+            temp += "Part III: $" + String.format("%.2f", part3) + '\n';
+            finalTax += part3;
         }
-        else {
+        else if (!isFinished){
             double part3 = (income - taxes[statusFinder][1]) * 0.25;
-            temp += "Part III: $" + part3 + '\n';
+            temp += "Part III: $" + String.format("%.2f", part3) + '\n';
+            finalTax += part3;
+            isFinished = true;
         }
-        if(income >= taxes[statusFinder][3]){
+        if(income >= taxes[statusFinder][2]){
             double part4 = (income - taxes[statusFinder][2]) * 0.30;
-            temp += "Part IIII: $" + part4 + '\n';
+            temp += "Part IIII: $" + String.format("%.2f", part4) + '\n';
+            finalTax += part4;
         }
-        else {
+        else if (!isFinished){
             double part4 = (income - taxes[statusFinder][2]) * 0.30;
-            temp += "Part IIII: $" + part4 + '\n';
+            temp += "Part IIII: $" + String.format("%.2f", part4) + '\n';
+            finalTax += part4;
         }
 
-        setContentsOfTextView(R.id.results, temp);
+        String result = taxPayer.getName() + ", your tax due is $" + String.format("%.2f", finalTax) + '\n' + temp;
+
+        setContentsOfTextView(R.id.results, result);
     }
 }

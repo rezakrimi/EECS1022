@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file:///eecs/home/r3za/Desktop/lab 2/EECS1022/lab2/app/app.iml" filepath="/eecs/home/r3za/Desktop/lab 2/EECS1022/lab2/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2.iml" filepath="$PROJECT_DIR$/lab2.iml" />
       <module fileurl="file:///eecs/home/r3za/Desktop/lab 2/EECS1022/lab2/lab2.iml" filepath="/eecs/home/r3za/Desktop/lab 2/EECS1022/lab2/lab2.iml" />
     </modules>
   </component>
