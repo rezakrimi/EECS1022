@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class Lab2Activity extends AppCompatActivity
 {
@@ -43,7 +44,7 @@ public class Lab2Activity extends AppCompatActivity
 
     private void setContentsOfTextView(int id, String newContents){
         View view = findViewById(id);
-        EditText textView = (EditText) view;
+        TextView textView = (TextView) view;
         textView.setText(newContents);
     }
 
