@@ -11,120 +11,250 @@
     tools:context="eecs1012.lab1.Lab1Activity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Your Name:"
-        android:id="@+id/labelName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:text="Enter Player 1 Name:" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Your Weight:"
-        android:id="@+id/labelWeight"
-        android:layout_below="@+id/labelName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Enter Player 2 Name:" />
+
+    <EditText
+        android:id="@+id/p1name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="83dp"/>
+        android:layout_below="@+id/textView"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <EditText
+        android:id="@+id/p2name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/p1name"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Your Height:"
-        android:id="@+id/labelHeight"
-        android:layout_below="@+id/labelWeight"
+        android:layout_below="@+id/p1name"
+        android:layout_centerHorizontal="true"
+        android:text="Round 1" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="74dp"/>
+        android:layout_below="@+id/textView4"
+        android:text="Player 1:" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="21dp"
+        android:text="Player 2:" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:id="@+id/p1round1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/weightsSpinner"
-        android:layout_alignTop="@+id/labelWeight"
-        android:layout_toRightOf="@+id/labelWeight"
-        android:layout_toEndOf="@+id/labelWeight"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
-        android:spinnerMode="dropdown"
-        android:entries="@array/weightsArray"
-        />
+        android:layout_alignEnd="@+id/p1name"
+        android:layout_alignRight="@+id/p1name"
+        android:layout_below="@+id/textView4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/textView5" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:id="@+id/p2round1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/heightsSpinner"
-        android:layout_alignTop="@+id/labelHeight"
-        android:layout_alignLeft="@+id/weightsSpinner"
-        android:layout_alignStart="@+id/weightsSpinner"
-        android:layout_above="@+id/inputHeight"
-        android:spinnerMode="dropdown"
-        android:entries="@array/heightsArray"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inputName"
-        android:layout_below="@+id/labelName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inputWeight"
-        android:layout_below="@+id/labelWeight"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/inputName"
-        android:layout_alignEnd="@+id/inputName"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inputHeight"
-        android:layout_below="@+id/labelHeight"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignEnd="@+id/p1name"
+        android:layout_alignLeft="@+id/p1round1"
+        android:layout_alignRight="@+id/p1name"
+        android:layout_alignStart="@+id/p1round1"
+        android:layout_alignTop="@+id/textView6" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Compute BMI"
-        android:id="@+id/buttonCompute"
-        android:onClick="computeButton"
-        android:layout_below="@+id/inputHeight"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignBottom="@+id/p2round1"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/p1round1"
+        android:onClick="round1pressed"
+        android:text="Finish Round 1" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="Round 2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="12dp"
+        android:text="Player 1:" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Player 2:"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/p1round2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/p2round1"
+        android:layout_alignLeft="@+id/p2round1"
+        android:layout_alignRight="@+id/p2round1"
+        android:layout_alignStart="@+id/p2round1"
+        android:layout_alignTop="@+id/textView8" />
+
+    <Spinner
+        android:id="@+id/p2round2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/p1round2"
+        android:layout_alignLeft="@+id/p1round2"
+        android:layout_alignRight="@+id/p1round2"
+        android:layout_alignStart="@+id/p1round2"
+        android:layout_alignTop="@+id/textView9" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/p2round2"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView8"
+        android:onClick="round2pressed"
+        android:text="Finish Round 2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Round 3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Answer"
-        android:id="@+id/labelAnswer"
-        android:textAlignment="center"
+        android:text="Player 1:"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView12"
+        android:layout_marginTop="15dp"
+        android:text="Player 2:" />
+
+    <Spinner
+        android:id="@+id/p1round3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/p2round2"
+        android:layout_alignLeft="@+id/p2round2"
+        android:layout_alignRight="@+id/p2round2"
+        android:layout_alignStart="@+id/p2round2"
+        android:layout_alignTop="@+id/textView12" />
+
+    <Spinner
+        android:id="@+id/p2round3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/p1round3"
+        android:layout_alignLeft="@+id/p1round3"
+        android:layout_alignRight="@+id/p1round3"
+        android:layout_alignStart="@+id/p1round3"
+        android:layout_alignTop="@+id/textView13" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/p2round3"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_below="@+id/textView12"
+        android:onClick="round3pressed"
+        android:text="Finish Round 3" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start a new game"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button4"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/buttonCompute"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Interpretatoin"
-        android:id="@+id/labelInterpretatoin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/labelAnswer"
-        android:layout_alignRight="@+id/labelAnswer"
-        android:layout_alignEnd="@+id/labelAnswer"
-        android:textAlignment="center"
-        />
+        android:textAlignment="center" />
 
 </RelativeLayout>

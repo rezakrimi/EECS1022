@@ -9,74 +9,87 @@ import android.widget.TextView;
 
 public class Lab1Activity extends AppCompatActivity
 {
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab1);
-        setTitle("EECS1022 W18 Lab1: BMI Calculator");
+        setTitle("EECS1022 W18 Lab3: RPS Game");
     }
 
-    private String getInterpretation(double BMI){
-        if(BMI < 18.5){
-            return "Underweight";
+    public String getTextViewValue(int id){
+        TextView textView = (TextView)findViewById(id);
+        return textView.getText().toString();
+    }
+
+    public void setTextViewValue(int id, String input){
+        TextView textView = (TextView)findViewById(id);
+        textView.setText(input);
+    }
+
+    public String getSpinnerSelected(int id){
+        Spinner spinner = (Spinner) findViewById(id);
+        return spinner.getSelectedItem().toString();
+    }
+
+    public void round1pressed(View view){
+        game = new Game(getTextViewValue(R.id.p1name), getTextViewValue(R.id.p2name));
+        String p1choice = getSpinnerSelected(R.id.p1round1);
+        String p2choice = getSpinnerSelected(R.id.p2round1);
+        int result = game.match(p1choice, p2choice);
+        switch (result){
+            case 0: setTextViewValue(R.id.result, "round 1 finished: tie between "+ game.p1name + " and" + game.p2name); break;
+            case 1: setTextViewValue(R.id.result, "round 1 finished: winner is "+game.p1name); break;
+            case 2: setTextViewValue(R.id.result, "round 1 finished: winner is "+game.p2name); break;
         }
-        else if(BMI < 25.0){
-            return "Normal";
+    }
+
+    public void round2pressed(View view){
+        String p1choice = getSpinnerSelected(R.id.p1round2);
+        String p2choice = getSpinnerSelected(R.id.p2round2);
+        game.match(p1choice, p2choice);
+        if(Math.abs(game.p1winnings - game.p2winnings) > 1){
+            game.isFinished = true;
         }
-        else if(BMI < 30.0){
-            return "Overweight";
+
+        if(game.isFinished){
+            switch (game.overallWinner()){
+                case 0: setTextViewValue(R.id.result, "round 2 finished: tie between "+ game.p1name + " and" + game.p2name + "\n(Game Over)"); break;
+                case 1: setTextViewValue(R.id.result, "round 2 finished: winner is "+game.p1name + "\n(Game Over)"); break;
+                case 2: setTextViewValue(R.id.result, "round 2 finished: winner is "+game.p2name + "\n(Game Over)"); break;
+            }
         }
         else{
-            return "Obese";
+            switch (game.overallWinner()){
+                case 0: setTextViewValue(R.id.result, "round 2 finished: tie between "+ game.p1name + " and" + game.p2name); break;
+                case 1: setTextViewValue(R.id.result, "round 2 finished: winner is "+game.p1name); break;
+                case 2: setTextViewValue(R.id.result, "round 2 finished: winner is "+game.p2name); break;
+            }
         }
     }
 
-    private void setContentsOfTextView(int id, String newContents){
-        View view = findViewById(id);
-        TextView textView = (TextView) view;
-        textView.setText(newContents);
-    }
-
-    private String getInputOfTextField(int id){
-        View view = findViewById(id);
-        EditText editText = (EditText) view;
-        String input = editText.getText().toString();
-        return input;
-    }
-
-    private String getItemSelected(int id){
-        View view = findViewById(id);
-        Spinner spinner = (Spinner) view;
-        String result = spinner.getSelectedItem().toString();
-        return result;
-    }
-
-    public void computeButton(View view){
-        String textName = getInputOfTextField(R.id.inputName);
-        String textWeight = getInputOfTextField(R.id.inputWeight);
-        String textHeight = getInputOfTextField(R.id.inputHeight);
-
-        double weight = Double.parseDouble(textWeight);
-        double height = Double.parseDouble(textHeight);
-
-        String weightUnit = getItemSelected(R.id.weightsSpinner);
-        String heightUnit = getItemSelected(R.id.heightsSpinner);
-
-        if("pounds".equals(weightUnit)){
-            weight *= 0.453592;
+    public void round3pressed(View view){
+        if (game.isFinished){
+            setTextViewValue(R.id.result, "Error: Game is already over");
+            return;
         }
 
-        switch(heightUnit){
-            case "centimeters": height /= 100; break;
-            case "inches": height *= 0.0254; break;
-        }
+        String p1choice = getSpinnerSelected(R.id.p1round3);
+        String p2choice = getSpinnerSelected(R.id.p2round3);
+        game.match(p1choice, p2choice);
 
-        Person temp = new Person(textName, weight, height);
-        String contents = textName + " has BMI " + String.format("%.2f", temp.getBMI());
-        String interpretation = textName + " is " + getInterpretation(temp.getBMI());
-        setContentsOfTextView(R.id.labelInterpretatoin, interpretation);
-        setContentsOfTextView(R.id.labelAnswer, contents);
+        switch (game.overallWinner()){
+            case 0: setTextViewValue(R.id.result, "round 3 finished: tie between "+ game.p1name + " and" + game.p2name + "\n(Game Over)"); break;
+            case 1: setTextViewValue(R.id.result, "round 3 finished: winner is "+game.p1name + "\n(Game Over)"); break;
+            case 2: setTextViewValue(R.id.result, "round 3 finished: winner is "+game.p2name + "\n(Game Over)"); break;
+        }
     }
+
+    public void newGamePressed(View view){
+        game = null;
+        setTextViewValue(R.id.result, "New Game Started");
+    }
+
 }
